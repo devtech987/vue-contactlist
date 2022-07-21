@@ -105,9 +105,12 @@ export default {
       })
     },
     search(event){
-      if(event.target.value!=''){
-      const dt = this.temp.filter((e)=>e.name?.toLowerCase()==event.target.value.toLowerCase())
-      this.contacts = dt
+      if(event.target.value != '') {
+        const dt = this.temp.filter((e)=> {
+          return e.name?.toLowerCase().indexOf(event.target.value.toLowerCase())>-1;
+          //  console.log('jj',e.name);  
+        });
+        this.contacts = dt;
       }else{
         this.contacts = [...this.temp]
       }
